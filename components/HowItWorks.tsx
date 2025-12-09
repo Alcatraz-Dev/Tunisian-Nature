@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { chipImg, frameImg, frameVideo, frameImg2 } from '../utils'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 const HowItWorks = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window === 'undefined') return
 
     gsap.from('#chip', {
