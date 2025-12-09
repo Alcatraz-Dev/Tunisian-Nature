@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { chipImg, frameImg, frameVideo, frameImg2 } from '../utils'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -10,8 +10,9 @@ gsap.registerPlugin(ScrollTrigger)
 const HowItWorks = () => {
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  useGSAP(() => {
-    // Animate chip
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
     gsap.from('#chip', {
       scrollTrigger: {
         trigger: '#chip',
@@ -23,35 +24,20 @@ const HowItWorks = () => {
       ease: 'power2.inOut',
     })
 
-    // Animate text blocks
-    animateWithGsap(
-      '.g_fadeIn',
+    gsap.fromTo(
+      '.mask-wrapper',
+      { opacity: 0 },
       {
         opacity: 1,
-        y: 0,
-        duration: 1,
+        scrollTrigger: {
+          trigger: '.mask-wrapper',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 1,
+        },
         ease: 'power2.inOut',
-      },
-      {}
+      }
     )
-
-    // Scroll-linked mask fade for large screens
-    if (window.innerWidth > 1024) {
-      gsap.fromTo(
-        '.mask-wrapper',
-        { opacity: 0 },
-        {
-          opacity: 1,
-          scrollTrigger: {
-            trigger: '.mask-wrapper',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 1, // links animation progress to scroll
-          },
-          ease: 'power2.inOut',
-        }
-      )
-    }
   }, [])
 
   return (
