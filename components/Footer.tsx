@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
                     <div className="text-gray-400 text-xs flex flex-col gap-2">
                         <p className="text-white font-semibold">Contact Us</p>
                         <p>For inquiries, pricing, or partnerships.</p>
-                        <p className="hover:text-amber-400 cursor-pointer">contact@alcatrazdev.se</p>
+                        <p className="hover:text-amber-400 cursor-pointer">wildhoneyorganic@gmail.com</p>
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-4">
