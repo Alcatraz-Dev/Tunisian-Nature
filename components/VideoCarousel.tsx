@@ -63,16 +63,16 @@ const VideoCarousel = () => {
     if (!video || !progressBar) return;
 
     const updateProgress = () => {
-      const progress = (video.currentTime / video.duration) * 100 || 0;
-      gsap.to(progressBar, { width: `${progress}%`, duration: 0.1, ease: "linear" });
+      const progressBar = videoSpanRef.current[videoId];
+      if (!progressBar) return;
 
-      if (video.currentTime >= video.duration - 0.1) {
-        if (videoId < products.length - 1) {
-          setVideoState((prev) => ({ ...prev, videoId: prev.videoId + 1 }));
-        } else {
-          setVideoState((prev) => ({ ...prev, isLastVideo: true, isPlaying: false }));
-        }
-      }
+      const progress = (video.currentTime / video.duration) * 100 || 0;
+
+      gsap.to(progressBar, {
+        width: `${progress}%`,
+        duration: 0.1,
+        ease: "linear"
+      });
     };
 
     const interval = setInterval(() => {
@@ -124,7 +124,7 @@ const VideoCarousel = () => {
 
               {/* Text overlay */}
               <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center text-white">
-                <h2 className="text-4xl lg:text-6xl font-bold">{product.title}</h2>
+                <h2 className="text-4xl lg:text-6xl font-bold text-amber-400">{product.title}</h2>
                 <p className="text-xl lg:text-2xl mt-2">{product.subtitle}</p>
               </div>
             </div>
@@ -139,27 +139,22 @@ const VideoCarousel = () => {
             <div
               key={i}
               className="relative w-16 h-3 bg-neutral-700 rounded-full mx-2 overflow-hidden"
-              ref={(el) => {
-                if (el) videoSpanRef.current[i] = el;
-              }}
             >
               <div
-                className="absolute top-0 left-0 h-full bg-white rounded-full w-0"
-                ref={(el) => {
-                  if (el) videoSpanRef.current[i] = el;
-                }}
+                ref={(el) => (videoSpanRef.current[i] = el as any)}
+                className="absolute top-0 left-0 h-full bg-amber-500 rounded-full w-0"
               />
             </div>
           ))}
         </div>
 
         <button
-          className="ml-4 p-3 rounded-full bg-neutral-800 hover:bg-neutral-700 transition shadow-md"
+          className="ml-4 p-3 rounded-full bg-neutral-800 hover:bg-neutral-700 transition shadow-md mb-3"
           onClick={togglePlay}
         >
           <img
             src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg}
-            className="w-6 h-6"
+            className="w-4 h-4"
             alt="control"
           />
         </button>

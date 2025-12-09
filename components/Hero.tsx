@@ -4,7 +4,7 @@ import { useGSAP } from '@gsap/react';
 
 const Hero: React.FC = () => {
   // Use a high-quality nature video (Wheat field/Sunset vibe suitable for organic products)
-  const videoUrl = "./videos/leaf.mp4";
+  const videoUrl = "./videos/desert.mp4";
 
   useGSAP(() => {
     gsap.to('#hero-title', { opacity: 1, y: 0, delay: 0.5, duration: 1, ease: 'power2.out' });
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
 
         <div
           id="cta"
-          className="flex flex-col items-center opacity-0 translate-y-20 relative z-20 pointer-events-none -mt-20 sm:-mt-24"
+          className="flex flex-col items-center opacity-0 translate-y-20 relative z-20 pointer-events-none -mt-40 sm:-mt-48"
         >
           <a
             id="cta-button"
