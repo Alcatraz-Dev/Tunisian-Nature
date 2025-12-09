@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const gallery = [
+  { src: "/videos/olive.mp4", alt: "Video of olive oil pouring" },
+  { src: "/images/olivefactory1.png", alt: "Olive grove at sunset" },
+  { src: "/images/olivefactory.png", alt: "Olive grove at sunset" },
   { src: "/images/olives.png", alt: "Olive grove at sunset" },
   { src: "/images/olive1.png", alt: "Bottle of premium Tunisian olive oil on table" },
   { src: "/images/olive.png", alt: "Close-up shot of olive oil pouring" },
@@ -40,12 +43,23 @@ const OliveOil: React.FC = () => {
           {/* Gallery */}
           <div className="space-y-6">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/30">
-              <img
-                src={active.src}
-                alt={active.alt}
-                className="w-full h-96 sm:h-[520px] object-cover transform transition-transform duration-700 ease-out hover:scale-105"
-                loading="lazy"
-              />
+              {active.src.endsWith(".mp4") ? (
+                <video
+                  src={active.src}
+                  className="w-full h-96 sm:h-[520px] object-cover transform transition-transform duration-700 ease-out hover:scale-105"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={active.src}
+                  alt={active.alt}
+                  className="w-full h-96 sm:h-[520px] object-cover transform transition-transform duration-700 ease-out hover:scale-105"
+                  loading="lazy"
+                />
+              )}
 
               {/* Badge */}
               <div className="absolute top-4 left-4 bg-amber-600/95 text-stone-900 px-3 py-1 rounded-full text-sm font-semibold shadow">
@@ -55,21 +69,47 @@ const OliveOil: React.FC = () => {
 
             {/* Thumbnails */}
             <div className="flex items-center gap-3 justify-center">
-              {gallery.map((g, i) => (
-                <button
-                  key={i}
-                  onClick={() => setIndex(i)}
-                  className={`rounded-xl overflow-hidden ring-2 ring-transparent focus:outline-none focus:ring-amber-400/60 ${i === index ? "ring-amber-400/80 scale-105" : "opacity-70 hover:opacity-100"
-                    } transition-all duration-200`}
-                >
-                  <img
-                    src={g.src}
-                    alt={g.alt}
-                    className="w-24 h-16 object-cover"
-                    loading="lazy"
-                  />
-                </button>
-              ))}
+              {gallery.map((g, i) => {
+                const isVideo = g.src.endsWith(".mp4");
+                return (
+                  <button
+                    key={i}
+                    onClick={() => setIndex(i)}
+                    className={`relative rounded-xl overflow-hidden ring-2 ring-transparent focus:outline-none focus:ring-amber-400/60 ${i === index ? "ring-amber-400/80 scale-105" : "opacity-70 hover:opacity-100"
+                      } transition-all duration-200`}
+                  >
+                    {isVideo ? (
+                      <>
+                        <video
+                          src={g.src}
+                          className="w-24 h-16 object-cover"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                        />
+                        {/* Play Icon Overlay */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <svg
+                            className="w-5 h-5 text-amber-400"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </>
+                    ) : (
+                      <img
+                        src={g.src}
+                        alt={g.alt}
+                        className="w-24 h-16 object-cover"
+                        loading="lazy"
+                      />
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
