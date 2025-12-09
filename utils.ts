@@ -44,4 +44,4 @@ export const replayImg = "https://img.icons8.com/ios-glyphs/30/ffffff/refresh--v
 export const chipImg = "https://cdn-icons-png.flaticon.com/512/3208/3208728.png"; // Quality Seal Icon
 export const frameImg = "https://raw.githubusercontent.com/adrianhajdin/iphone/main/public/assets/images/frame.png";
 export const frameImg2 = '/images/mask.svg';
-export const frameVideo = "../public/videos/drone.mp4"; // Vertical nature video (Wheat/Nature)
+export const frameVideo = "/videos/drone.mp4"; // Vertical nature video (Wheat/Nature)
