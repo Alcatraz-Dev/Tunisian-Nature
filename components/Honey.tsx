@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const gallery = [
   { src: "/videos/honey.mp4", alt: "Honey farm in Tunisia" },
-  { src: "/images/honeyfarme.png", alt: "Honey farm in Tunisia" },
-  { src: "/images/fresh-honey.png", alt: "Honey farm in Tunisia" },
+  { src: "/images/honeyfarme.png", alt: "honey farm in Tunisia " },
+  { src: "/images/fresh-honey.png", alt: "fresh honey in Tunisia" },
   { src: "/images/honey.png", alt: "Honey farm in Tunisia" },
   { src: "/images/honey1.png", alt: "Close-up of premium honey jar" },
   { src: "/images/honey2.png", alt: "Honey dripping from comb" },
