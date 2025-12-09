@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
         >
           <a
             id="cta-button"
-            href="#highlights"
+            href="#videoCarousel"
             className="px-6 py-2 sm:px-8 sm:py-3 rounded-full bg-amber-600 hover:bg-amber-500 transition-all duration-300 text-white text-sm sm:text-base font-medium shadow-lg shadow-amber-900/40 pointer-events-auto hover:shadow-amber-600/60 hover:scale-110 border border-transparent hover:border-amber-300"
           >
             Explore Collection

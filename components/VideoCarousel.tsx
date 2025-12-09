@@ -100,7 +100,7 @@ const VideoCarousel = () => {
   return (
     <>
       {/* Video slider */}
-      <div className="overflow-hidden w-full max-w-7xl rounded-3xl shadow-2xl mx-auto">
+      <div id="videoCarousel" className="overflow-hidden w-full max-w-7xl rounded-3xl shadow-2xl mx-auto">
         <div id="slider" className="flex w-full transition-transform duration-700 ease-in-out">
           {products.map((product, i) => (
             <div

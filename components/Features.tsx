@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -54,13 +55,13 @@ const Features: React.FC = () => {
                     <div className="mt-10 mb-24 w-full relative">
                         <div className="flex flex-col md:flex-row gap-5 items-center justify-center">
                             {/* Feature 1 - Dates/Desert */}
-                            <div className="overflow-hidden flex-1 h-[50vh] bg-zinc-900 rounded-3xl group cursor-pointer relative">
+                            <Link to="/dates" className="block overflow-hidden flex-1 h-[50vh] bg-zinc-900 rounded-3xl group cursor-pointer relative">
                                 <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
                                 <img src="/images/dates.png" alt="Sahara" className="feature-video g_grow w-full h-full object-cover scale-150 opacity-0 transition-transform duration-700 ease-in-out" />
                                 <div className="absolute bottom-8 left-8 z-20">
                                     <p className="text-white font-semibold text-2xl">Golden Palm Oases <br /> of the Sahara.</p>
                                 </div>
-                            </div>
+                            </Link>
 
                             {/* Feature 2 - Olive/Mediterranean */}
                             <div className="overflow-hidden flex-1 h-[50vh] bg-zinc-900 rounded-3xl group cursor-pointer relative">

@@ -3,9 +3,10 @@ import { HighlightSlide, NavItem } from "./types";
 
 export const NAV_LIST: NavItem[] = [
   { name: "Home", link: "#" },
-  { name: "Olive Oil", link: "#highlights" },
-  { name: "Dates", link: "#highlights" },
-  { name: "Honey", link: "#highlights" },
+  { name: "Olive Oil", link: "/olive-oil" },
+  { name: "Dates", link: "/dates" },
+  { name: "Honey", link: "/honey" },
+  { name: "Tuna", link: "/tuna" },
   { name: "Wholesale", link: "#wholesale" },
   { name: "Contact", link: "#contact" },
 ];
