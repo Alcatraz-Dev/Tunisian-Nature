@@ -1,0 +1,12 @@
+/* globals.css or component-specific CSS */
+.mask-wrapper {
+  opacity: 0;       /* hidden by default */
+  transition: opacity 1s ease;
+}
+
+/* Small devices: always visible */
+@media (max-width: 1024px) {
+  .mask-wrapper {
+    opacity: 1 !important;
+  }
+}
