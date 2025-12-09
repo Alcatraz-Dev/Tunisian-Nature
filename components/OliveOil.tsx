@@ -42,11 +42,12 @@ const OliveOil: React.FC = () => {
 
           {/* Gallery */}
           <div className="space-y-6">
+            {/* Main Image / Video */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/30">
               {active.src.endsWith(".mp4") ? (
                 <video
                   src={active.src}
-                  className="w-full h-96 sm:h-[520px] object-cover transform transition-transform duration-700 ease-out hover:scale-105"
+                  className="w-full h-48 sm:h-64 md:h-[380px] object-cover transform transition-transform duration-700 ease-out hover:scale-105"
                   autoPlay
                   loop
                   muted
@@ -56,19 +57,19 @@ const OliveOil: React.FC = () => {
                 <img
                   src={active.src}
                   alt={active.alt}
-                  className="w-full h-96 sm:h-[520px] object-cover transform transition-transform duration-700 ease-out hover:scale-105"
+                  className="w-full h-48 sm:h-64 md:h-[380px] object-cover transform transition-transform duration-700 ease-out hover:scale-105"
                   loading="lazy"
                 />
               )}
 
               {/* Badge */}
-              <div className="absolute top-4 left-4 bg-amber-600/95 text-stone-900 px-3 py-1 rounded-full text-sm font-semibold shadow">
+              <div className="absolute top-3 left-3 bg-amber-600/95 text-stone-900 px-2 py-0.5 rounded-full text-xs sm:text-sm font-semibold shadow">
                 Extra Virgin
               </div>
             </div>
 
             {/* Thumbnails */}
-            <div className="flex items-center gap-3 justify-center">
+            <div className="flex items-center gap-2 justify-center">
               {gallery.map((g, i) => {
                 const isVideo = g.src.endsWith(".mp4");
                 return (
@@ -82,16 +83,15 @@ const OliveOil: React.FC = () => {
                       <>
                         <video
                           src={g.src}
-                          className="w-24 h-16 object-cover"
+                          className="w-16 h-12 sm:w-20 sm:h-14 object-cover"
                           autoPlay
                           loop
                           muted
                           playsInline
                         />
-                        {/* Play Icon Overlay */}
                         <div className="absolute inset-0 flex items-center justify-center">
                           <svg
-                            className="w-5 h-5 text-amber-400"
+                            className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                           >
@@ -103,7 +103,7 @@ const OliveOil: React.FC = () => {
                       <img
                         src={g.src}
                         alt={g.alt}
-                        className="w-24 h-16 object-cover"
+                        className="w-16 h-12 sm:w-20 sm:h-14 object-cover"
                         loading="lazy"
                       />
                     )}
