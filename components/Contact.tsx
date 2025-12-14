@@ -45,21 +45,31 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setStatus('submitting');
 
-    try {
-      emailjs.init(`${process.env.VITE_EMAILJS_PUBLIC_KEY}`)
-      await emailjs.sendForm(`${process.env.VITE_EMAILJS_SERVICE_ID}`, `${process.env.VITE_EMAILJS_TEMPLATE_ID}`, formRef.current, {
-        publicKey: `5d66oGaU3xDEJpqojXpLf`,
-      })
+    if (!formRef.current) return;
 
+    try {
+      await emailjs.sendForm(
+
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      );
+      console.log({
+        service: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        template: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      });
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
 
-      // Reset status after 3 seconds
       setTimeout(() => setStatus('idle'), 3000);
     } catch (error) {
       console.error('EmailJS error:', error);
+      alert('Message failed. Please try again.');
       setStatus('idle');
-      // You might want to show an error message to the user here
     }
   };
 

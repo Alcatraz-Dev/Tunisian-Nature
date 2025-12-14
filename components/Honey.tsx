@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Timeline } from "./ui/timeline";
 
 const gallery = [
   { src: "/videos/honey.mp4", alt: "Honey farm in Tunisia" },
@@ -9,13 +10,78 @@ const gallery = [
   { src: "/images/honey1.png", alt: "Close-up of premium honey jar" },
   { src: "/images/honey2.png", alt: "Honey dripping from comb" },
 ];
-
+const timelineData = [
+  {
+    step: 1,
+    title: "Natural Nectar Collection",
+    subtitle: "Bees foraging wildflowers",
+    meta: "Tunisian flora · Seasonal blooms",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Honeybees collect nectar from wildflowers, citrus blossoms, and native
+        Mediterranean plants across Tunisia. The floral source determines the
+        honey’s aroma, color, and nutritional profile.
+      </p>
+    ),
+  },
+  {
+    step: 2,
+    title: "Hive Maturation",
+    subtitle: "Natural enzymatic transformation",
+    meta: "Enzymes · Moisture reduction",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Inside the hive, bees naturally convert nectar into honey through enzymatic
+        activity and controlled evaporation, sealing the honeycomb only when optimal
+        maturity and moisture levels are reached.
+      </p>
+    ),
+  },
+  {
+    step: 3,
+    title: "Gentle Harvesting",
+    subtitle: "Respecting bees and ecosystem",
+    meta: "Traditional beekeeping",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Beekeepers carefully harvest capped honeycombs using non-destructive methods,
+        ensuring colony health, sustainability, and minimal disturbance to the bees.
+      </p>
+    ),
+  },
+  {
+    step: 4,
+    title: "Cold Extraction & Filtration",
+    subtitle: "Raw and unprocessed",
+    meta: "Low-temperature extraction",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Honey is extracted at low temperatures and lightly filtered to remove natural
+        wax particles while preserving enzymes, antioxidants, and antibacterial
+        properties.
+      </p>
+    ),
+  },
+  {
+    step: 5,
+    title: "Quality Control & Packaging",
+    subtitle: "Purity guaranteed",
+    meta: "Food safety standards",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Each batch is tested for purity, moisture content, and safety before being
+        sealed in food-grade containers to maintain freshness, flavor, and shelf
+        stability.
+      </p>
+    ),
+  },
+];
 const Honey: React.FC = () => {
   const [index, setIndex] = useState(0);
   const active = gallery[index];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 text-white py-16">
+    <section className="min-h-screen bg-linear-to-b from-stone-950 via-stone-900 to-stone-950 text-white py-16">
       <div className="screen-max-width px-5 sm:px-10">
 
         {/* Back */}
@@ -188,6 +254,8 @@ const Honey: React.FC = () => {
             <p className="text-stone-300 text-sm">Fast EU delivery with tracking — arrives in 3–7 days.</p>
           </div>
         </div>
+        {/* Timeline */}
+        <Timeline data={timelineData} />
       </div>
     </section>
   );
