@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Timeline } from "./ui/timeline";
 
 const gallery = [
   { src: "/videos/tuna.mp4", alt: "Fresh Tunisian tuna" },
@@ -8,13 +9,78 @@ const gallery = [
   { src: "/images/tuna1.png", alt: "Sliced tuna on plate" },
   { src: "/images/tuna2.png", alt: "Whole tuna in Mediterranean waters" },
 ];
-
+const timelineData = [
+  {
+    step: 1,
+    title: "Sustainable Fishing",
+    subtitle: "Wild-caught Mediterranean tuna",
+    meta: "FAO 37 · Regulated season",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Our tuna is wild-caught in the Mediterranean Sea using regulated and selective
+        fishing methods that minimize bycatch and protect marine ecosystems, in line
+        with international fisheries management standards.
+      </p>
+    ),
+  },
+  {
+    step: 2,
+    title: "Immediate Onboard Handling",
+    subtitle: "Freshness preserved at sea",
+    meta: "Iced or super-chilled",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Immediately after capture, the tuna is carefully bled, cleaned, and rapidly
+        chilled onboard to slow oxidation and bacterial growth, preserving texture,
+        flavor, and nutritional value.
+      </p>
+    ),
+  },
+  {
+    step: 3,
+    title: "Controlled Processing",
+    subtitle: "Traditional Mediterranean methods",
+    meta: "HACCP certified facilities",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        The fish is processed in certified facilities under strict hygiene controls.
+        Filleting and preparation are performed with minimal handling to maintain the
+        natural structure and quality of the meat.
+      </p>
+    ),
+  },
+  {
+    step: 4,
+    title: "Quality & Safety Testing",
+    subtitle: "Verified purity and safety",
+    meta: "Mercury & histamine tested",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Each batch undergoes laboratory testing for mercury levels, histamine, and
+        microbiological safety, ensuring compliance with EU and international food
+        safety regulations.
+      </p>
+    ),
+  },
+  {
+    step: 5,
+    title: "Packaging & Cold Chain",
+    subtitle: "Freshness locked in",
+    meta: "Vacuum-sealed · Cold chain maintained",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Tuna portions are vacuum-packed and transported under a continuous cold chain,
+        protecting freshness, flavor, and nutritional integrity from sea to customer.
+      </p>
+    ),
+  },
+];
 const Tuna: React.FC = () => {
   const [index, setIndex] = useState(0);
   const active = gallery[index];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 text-white py-16">
+    <section className="min-h-screen bg-linear-to-b from-stone-950 via-stone-900 to-stone-950 text-white py-16">
       <div className="screen-max-width px-5 sm:px-10">
 
         {/* Back */}
@@ -187,6 +253,8 @@ const Tuna: React.FC = () => {
             <p className="text-stone-300 text-sm">Fast EU delivery with tracking — arrives in 3–7 days.</p>
           </div>
         </div>
+        {/* Timeline */}
+        <Timeline data={timelineData} />
       </div>
     </section>
   );

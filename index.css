@@ -1,3 +1,4 @@
+@import "tailwindcss";
 /* globals.css or component-specific CSS */
 .mask-wrapper {
   opacity: 0;       /* hidden by default */

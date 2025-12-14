@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Timeline } from "./ui/timeline";
 
 const gallery = [
   { src: "/videos/olive.mp4", alt: "Video of olive oil pouring" },
@@ -10,12 +11,77 @@ const gallery = [
   { src: "/images/olive.png", alt: "Close-up shot of olive oil pouring" },
 ];
 
+const timelineData = [
+  {
+    step: 1,
+    title: "Harvesting (Oct–Nov)",
+    subtitle: "Hand-picked at peak ripeness",
+    meta: "Mediterranean coast · Early season",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Olives are carefully hand-harvested from centuries-old trees at optimal maturity.
+        Early harvesting preserves high polyphenol levels, delivering superior aroma,
+        freshness, and antioxidant richness.
+      </p>
+    ),
+  },
+  {
+    step: 2,
+    title: "Cold Pressing",
+    subtitle: "Mechanical extraction only",
+    meta: "≤ 27°C · Within 6 hours",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Olives are crushed and cold-pressed within hours of harvest at controlled low
+        temperatures. This process protects delicate flavors, vitamins, and natural
+        health benefits without chemical intervention.
+      </p>
+    ),
+  },
+  {
+    step: 3,
+    title: "Natural Filtration",
+    subtitle: "Purity without compromise",
+    meta: "Gravity-filtered",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        The oil undergoes gentle natural filtration to remove impurities while preserving
+        texture and character. No refining or heat treatment is ever used.
+      </p>
+    ),
+  },
+  {
+    step: 4,
+    title: "Quality Control",
+    subtitle: "Certified extra virgin",
+    meta: "Acidity < 0.8%",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        Each batch is laboratory-tested for acidity, peroxide value, and sensory profile.
+        Only oils that meet international extra virgin standards are approved for bottling.
+      </p>
+    ),
+  },
+  {
+    step: 5,
+    title: "Bottling & Storage",
+    subtitle: "Protected from light & oxygen",
+    meta: "Dark glass · Nitrogen sealed",
+    content: (
+      <p className="text-stone-300 leading-relaxed">
+        The oil is bottled in UV-protective dark glass and sealed under nitrogen to prevent
+        oxidation, ensuring maximum freshness from mill to table.
+      </p>
+    ),
+  },
+];
+
 const OliveOil: React.FC = () => {
   const [index, setIndex] = useState(0);
   const active = gallery[index];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-stone-950 via-stone-900 to-stone-950 text-white py-16">
+    <section className="min-h-screen bg-linear-to-b from-stone-950 via-stone-900 to-stone-950 text-white py-16">
       <div className="screen-max-width px-5 sm:px-10">
 
         {/* Back */}
@@ -215,6 +281,9 @@ const OliveOil: React.FC = () => {
             <p className="text-stone-300 text-sm">Fast EU delivery with full tracking — arrives in 3–7 days.</p>
           </div>
         </div>
+
+        {/* Timeline */}
+        <Timeline data={timelineData} />
       </div>
     </section>
   );
